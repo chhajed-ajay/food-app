@@ -1,0 +1,26 @@
+version: "2"
+services:
+  server:
+    image: vismayasolanki/backend
+    container_name: backend
+    restart: always
+    ports:
+      - "5005:5005"
+    links:
+      - mongo
+      
+  client:
+    image: vismayasolanki/frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - /Users/vismayasolanki/Desktop/foodapp/data:/data/db
+    ports:
+      - "27017:27017"
